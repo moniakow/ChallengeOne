@@ -7,3 +7,5 @@ W najbliższej przyszłości chciałabym się przebranżowić do IT.
 Mam nadzieję, że **Dare IT Challenge** mi w tym pomoże.
 
 *Monika*
+
+![wynik_testu_purpurowego](https://github.com/moniakow/ChallengeOne/blob/main/image.png?raw=true)
