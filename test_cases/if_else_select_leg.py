@@ -5,12 +5,14 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
+from pages.add_player import AddPlayer
 from pages.dashboard import Dashboard
 from pages.login_page import LoginPage
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
-class TestLoginPage(unittest.TestCase):
+class TestElseIfLeg(unittest.TestCase):
+
     @classmethod
     def setUp(self):
         os.chmod(DRIVER_PATH, 755)
@@ -25,13 +27,18 @@ class TestLoginPage(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-    def test_user_login(self):
+    def testElseIfConstructLeg(self):
         user_login = LoginPage(self.driver)
-        user_login.title_of_page()
-        user_login.assert_element_text(self.driver, user_login.login_header_xpath, user_login.expected_login_header)
         user_login.type_in_email("user03@getnada.com")
         user_login.type_in_password("Test-1234")
         user_login.submit_password()
         dashboard_page = Dashboard(self.driver)
-        dashboard_page.title_of_page()
-        #time.sleep(5)
+        dashboard_page.add_player_button_click()
+        add_player_page = AddPlayer(self.driver)
+        add_player_page.field_send_keys(add_player_page.new_player_email_input_xpath, "test1@yahoo.com")
+        add_player_page.field_send_keys(add_player_page.new_player_name_input_xpath, "Supa")
+        add_player_page.field_send_keys(add_player_page.new_player_surname_input_xpath, "Dupa")
+        add_player_page.select_leg("right")
+        time.sleep(3)
+        add_player_page.select_leg("left")
+        time.sleep(3)

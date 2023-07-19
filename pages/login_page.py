@@ -7,9 +7,14 @@ class LoginPage(BasePage):
     login_header_xpath = "//*[@id='__next']//div[1]/h5"
     login_url = ('https://scouts-test.futbolkolektyw.pl/en')
     expected_title = "Scouts panel - sign in"
+    select_language_dropdown_xpath = '//form/div/div[2]/div'
+    select_polish_dropdown_option_xpath = '//div[3]/ul/li[1]'
+    remind_password_hyperlink_xpath = '//div[1]/a'
+    password_invalid_info_xpath = '/html/body/div/form/div/div[1]/div[3]/span'
     expected_login_header = "Scouts Panel"
-    title_of_box = ""
-    header_of_box = ""
+    expected_polish_password_remind_text = "Przypomnij hasło"
+    expected_invalid_password_message = "Identifier or password invalid."
+
 
     def type_in_email(self, email):
         self.field_send_keys(self.login_field_xpath, email)
